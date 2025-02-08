@@ -44,11 +44,23 @@ fon = pygame.image.load("Stil.png")
 display.set_caption('dddd')
 clock = pygame.time.Clock()
 start_game = True
-bot = randint(1, 3)
+
+
+
+
+
 
 kamin = Game("kamin.png", 70, 180, 0)
 nozn = Game("nozn.png", 70, 180, 0)
 papir = Game("papir.png", 70, 180, 0)
+
+kamin_bot = Game("kamin.png", 500, 180, 0)
+nozn_bot = Game("nozn.png", 500, 180, 0)
+papir_bot = Game("papir.png", 500, 180, 0)
+
+kamin_t = False
+nozn_t = False
+papir_t = False
 while start_game:
     window.blit(fon,(0, 0))
     Q.reset()
@@ -70,17 +82,45 @@ while start_game:
             start_game = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
-                kamin.reset()
-                kamin.update()
-            if event.key == pygame.K_w:
-                nozn.reset()
-                nozn.update()
-            if event.key == pygame.K_e:
-                papir.reset()
-                papir.update()
-
+                kamin_t = True
                 
-
+            if event.key == pygame.K_w:
+                nozn_t = True
+            if event.key == pygame.K_e:    
+                papir_t = True
+    if kamin_t == True:
+        kamin.reset()
+        nozn == False
+        papir == False
+        bot = randint(1, 3)
+        if bot==1:
+           kamin_bot.reset() 
+        if bot==2:
+           nozn_bot.reset() 
+        if bot==3:
+           papir_bot.reset() 
+    if nozn_t == True:
+        nozn.reset()
+        kamin == False
+        papir == False
+        bot = randint(1, 3)
+        if bot==1:
+           kamin_bot.reset() 
+        if bot==2:
+           nozn_bot.reset() 
+        if bot==3:
+           papir_bot.reset() 
+    if papir_t == True:
+        papir.reset()
+        kamin == False
+        nozn == False
+        bot = randint(1, 3)
+        if bot==1:
+           kamin_bot.reset() 
+        if bot==2:
+           nozn_bot.reset() 
+        if bot==3:
+           papir_bot.reset() 
 
 
     pygame.display.update()
